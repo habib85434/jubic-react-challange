@@ -1,7 +1,9 @@
 .cs-button {
   border: 1px solid #eeeeee !important;
+  background: #ffffff !important;
   font-weight: 300 !important;
   font-family: revert !important;
+  margin-left: 0.5rem;
 }
 
 .com-input {
@@ -18,4 +20,25 @@
 
 .modal-footer {
   border-top: 0 none;
+}
+
+.cs-table {
+  text-align: left !important;
+}
+
+.cs-table tr td:nth-child(3n + 3) {
+  text-align: right !important;
+}
+
+.cs-table-head {
+  background: #f6f6f6;
+  border-top: 2px solid #ededed !important;
+}
+
+.modal-body {
+  margin: 0px 10px !important;
+}
+
+.modal-footer {
+  border-top: none !important;
 }
