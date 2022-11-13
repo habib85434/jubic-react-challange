@@ -7,6 +7,7 @@ export interface JubicRecordType {
 
 export interface ButtonProps {
   label: string;
+  buttonType?: "submit" | "reset" | "button";
   handleClick?: () => void;
 }
 
@@ -18,11 +19,15 @@ export interface ModalProps {
 export interface InputProps {
   inputLabel: string;
   inputValue: string | number;
-  onChangeHandler?: (event: object) => void;
+  onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface DisplayTableProps {
   tableHeader: Array<string>;
   tableData: Array<JubicRecordType>;
-  removeRecord: (event: object, id: number) => void;
+  removeRecord: (id: number) => void;
+}
+
+export interface inputChangeHandlerType {
+  (value: string): void;
 }

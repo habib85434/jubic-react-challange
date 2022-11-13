@@ -4,7 +4,7 @@ import { Button } from "./button";
 import ModalRecordDisplayDetails from "./modal-record-display-details";
 import "./style.css";
 
-export default function RecordDisplayTable({
+export function RecordDisplayTable({
   tableHeader,
   tableData,
   removeRecord,
@@ -18,7 +18,7 @@ export default function RecordDisplayTable({
       <td>{data.name}</td>
       <td>{data.description}</td>
       <td>
-        <span onClick={(event) => removeRecord(event, data.id)}>
+        <span onClick={() => removeRecord(data.id)}>
           <Button label="Delete" />
         </span>
 
