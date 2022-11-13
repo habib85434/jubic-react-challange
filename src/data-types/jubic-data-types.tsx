@@ -18,6 +18,8 @@ export interface ModalProps {
 
 export interface InputProps {
   inputLabel: string;
+  lebelLength?: string;
+  inputLength?: string;
   inputValue: string | number;
   onChangeHandler?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

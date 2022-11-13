@@ -2,12 +2,18 @@ import React from "react";
 import { InputProps } from "../../data-types/jubic-data-types";
 import "./style.css";
 
-export function Input({ inputLabel, inputValue, onChangeHandler }: InputProps) {
+export function Input({
+  inputLabel,
+  lebelLength = "col-md-3",
+  inputLength = "col-md-9",
+  inputValue,
+  onChangeHandler,
+}: InputProps) {
   return (
     <>
       <div className="form-group row com-input">
-        <label className="col-sm-1 col-form-label">{inputLabel}</label>
-        <div className="col-sm-10">
+        <label className={`col-form-label ${lebelLength}`}>{inputLabel}</label>
+        <div className={`${inputLength}`}>
           <input
             value={inputValue}
             onChange={onChangeHandler}

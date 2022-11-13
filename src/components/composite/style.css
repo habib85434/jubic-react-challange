@@ -1,0 +1,13 @@
+.cs-card {
+  width: 100%;
+  background: #f6f6f6 !important;
+  margin-top: 1.2rem;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.desc-label {
+  padding-left: 3% !important;
+}

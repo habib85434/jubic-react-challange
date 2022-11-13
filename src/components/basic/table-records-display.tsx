@@ -30,8 +30,8 @@ export function RecordDisplayTable({
   ));
   return (
     <>
-      <table className="table">
-        <thead>
+      <table className="table cs-table">
+        <thead className="cs-table-head">
           <tr>{headerList}</tr>
         </thead>
         <tbody>{list}</tbody>

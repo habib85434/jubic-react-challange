@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import { Button } from "../basic/button";
 import { Input } from "../basic/input";
 import { RecordDisplayTable } from "../basic/table-records-display";
-import { tableHeader } from "./consts";
+import { tableHeader, DATA_NOT_FOUND } from "./consts";
 import {
   JubicRecordType,
   inputChangeHandlerType,
 } from "../../data-types/jubic-data-types";
+import "./style.css";
 
 export function RecordCRD() {
   const getLocalStrogeData = (): Array<JubicRecordType> => {
@@ -21,9 +25,11 @@ export function RecordCRD() {
 
   const [id, setId] = useState<number>(1);
   const [name, setName] = useState<string>("");
-  const [description, setDescription] = useState("");
-  const [comment, setComment] = useState("");
-  const [data, setData] = useState(getLocalStrogeData());
+  const [description, setDescription] = useState<string>("");
+  const [comment, setComment] = useState<string>("");
+  const [data, setData] = useState<Array<JubicRecordType>>(
+    getLocalStrogeData()
+  );
 
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,33 +73,60 @@ export function RecordCRD() {
 
   return (
     <>
-      <form onSubmit={onSubmitHandler}>
-        <Input
-          inputLabel="Name"
-          inputValue={name}
-          onChangeHandler={(e) => inputChangeHandler(setName, e)}
-        />
+      <div className="card cs-card mb-4">
+        <div className="card-body">
+          <form onSubmit={onSubmitHandler}>
+            <Row className="mb-3">
+              <Col md="3">
+                <Input
+                  inputLabel="Name"
+                  lebelLength="col-md-3"
+                  inputLength="col-md-9"
+                  inputValue={name}
+                  onChangeHandler={(e) => inputChangeHandler(setName, e)}
+                />
+              </Col>
+              <Col md="9">
+                <Input
+                  inputLabel="Description"
+                  lebelLength="col-md-2 desc-label"
+                  inputLength="col-md-10"
+                  inputValue={description}
+                  onChangeHandler={(e) => inputChangeHandler(setDescription, e)}
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col md="12">
+                <Input
+                  inputLabel="Comment"
+                  lebelLength="col-md-1"
+                  inputLength="col-md-11"
+                  inputValue={comment}
+                  onChangeHandler={(e) => inputChangeHandler(setComment, e)}
+                />
+              </Col>
+            </Row>
+            <Row className="mt-1">
+              <Col className="text-right">
+                <Button label="Clear" handleClick={clearFormData} />
+                <Button label="Add" buttonType="submit" />
+              </Col>
+            </Row>
+          </form>
+        </div>
+      </div>
 
-        <Input
-          inputLabel="Description"
-          inputValue={description}
-          onChangeHandler={(e) => inputChangeHandler(setDescription, e)}
-        />
-        <Input
-          inputLabel="Comment"
-          inputValue={comment}
-          onChangeHandler={(e) => inputChangeHandler(setComment, e)}
-        />
-
-        <Button label="Add" buttonType="submit" />
-        <Button label="Clear" handleClick={clearFormData} />
-      </form>
-      <div>
-        <RecordDisplayTable
-          tableHeader={tableHeader}
-          tableData={data}
-          removeRecord={removeItem}
-        />
+      <div className="text-center">
+        {data.length > 0 ? (
+          <RecordDisplayTable
+            tableHeader={tableHeader}
+            tableData={data}
+            removeRecord={removeItem}
+          />
+        ) : (
+          <span>{DATA_NOT_FOUND}</span>
+        )}
       </div>
     </>
   );
