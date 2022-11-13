@@ -59,8 +59,6 @@ export function RecordCRD() {
 
   useEffect(() => {
     localStorage.setItem("jubic_records", JSON.stringify(data));
-    console.log("TYPE OF : ");
-    console.log(typeof data);
   }, [data]);
 
   const removeItem = (id: number) => {
